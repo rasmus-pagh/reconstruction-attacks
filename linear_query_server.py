@@ -59,7 +59,7 @@ def query():
             response = {'error': f'query vector must consist of {n} values of plus or minus 1'}
         else:
             secrets_vector = secrets(challenge_id, n)
-            rng = np.random.default_rng(abs(hash(challenge_id+query_string))) # fix for a given query string
+            rng = np.random.default_rng(abs(hash(challenge_id+query_string))) # fix response for a given query string
             noise = rng.laplace(scale = 1/epsilon)
             true_result = int(np.dot(query_vector, secrets_vector))
             query_result = str(int(np.clip(np.round(true_result + noise), -n, n)))
@@ -73,7 +73,7 @@ def query():
     return json.dumps(response)
 
 
-@app.route('/leaderboard/') #, methods=['GET','POST'])
+@app.route('/leaderboard/')
 def leaderboard():
     response = check_required_args(request.args, ['n'])
     if response is not None:
