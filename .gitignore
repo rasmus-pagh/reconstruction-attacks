@@ -77,6 +77,7 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+reconstruction_attack_solution.ipynb
 
 # IPython
 profile_default/
@@ -121,6 +122,7 @@ celerybeat.pid
 
 # Environments
 .env
+data/
 .venv
 env/
 venv/
